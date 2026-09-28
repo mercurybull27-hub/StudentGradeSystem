@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct nilaiSTD {
+    double clo1, clo2, clo3, clo4;
+    double nilaiAkhir;
+    string indeks;
+};
+
+double hitungNilaiAkhir(double clo1, double clo2, double clo3, double clo4) {
+    return (0.30 * clo1) + (0.30 * clo2) + (0.20 * clo3) + (0.20 * clo4);
+}
+
+string tentukanIndeks(double nilai) {
+    if (nilai > 80) return "A";
+    if (nilai > 70) return "AB";
+    if (nilai > 65) return "B";
+    if (nilai > 60) return "BC";
+    if (nilai > 50) return "C";
+    if (nilai > 40) return "D";
+    return "E";
+}
+
+int main() {
+    nilaiSTD mhs[3];
+
+    cout << "=== STUDENT GRADE SYSTEM ===" << endl;
+
+    for (int i = 0; i < 3; i++) {
+        cout << "\nMahasiswa " << (i + 1) << endl;
+        cout << "CLO 1: ";
+        cin >> mhs[i].clo1;
+        cout << "CLO 2: ";
+        cin >> mhs[i].clo2;
+        cout << "CLO 3: ";
+        cin >> mhs[i].clo3;
+        cout << "CLO 4: ";
+        cin >> mhs[i].clo4;
+
+        mhs[i].nilaiAkhir = hitungNilaiAkhir(mhs[i].clo1, mhs[i].clo2, mhs[i].clo3, mhs[i].clo4);
+        mhs[i].indeks = tentukanIndeks(mhs[i].nilaiAkhir);
+    }
+
+    cout << "\n=== HASIL ===" << endl;
+    for (int i = 0; i < 3; i++) {
+        cout << "Mahasiswa " << (i + 1) << endl;
+        cout << "Nilai Akhir: " << mhs[i].nilaiAkhir << endl;
+        cout << "Indeks: " << mhs[i].indeks << endl;
+    }
+
+    return 0;
+}
